@@ -113,10 +113,10 @@ export default function PlaysPage() {
     setNotes(play.notes || "");
     
     // Convert participants to form format
-    const formParticipants = play.participants?.map(p => ({
+    const formParticipants: ParticipantForm[] = play.participants?.map(p => ({
       name: p.playerName,
-      score: p.score || "",
-      position: p.position || "",
+      score: (p.score !== null && p.score !== undefined) ? p.score : "",
+      position: (p.position !== null && p.position !== undefined) ? p.position : "",
       isWinner: p.isWinner,
     })) || [{ name: "", score: "", position: "", isWinner: false }];
     
