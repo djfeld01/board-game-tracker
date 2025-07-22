@@ -1,22 +1,25 @@
 # Deployment Guide
 
-## 1. Supabase Setup
+## 1. Database Setup (Neon - Free PostgreSQL)
 
-### Create Supabase Project
-1. Go to [supabase.com](https://supabase.com) and sign up/login
-2. Click "New project"
+### Create Neon Project
+1. Go to [neon.tech](https://neon.tech) and sign up/login with GitHub
+2. Click "Create Project"
 3. Enter project name: `boardgame-tracker`
-4. Choose a strong database password (save it!)
-5. Select a region close to your users
-6. Click "Create new project"
+4. Select region close to your users
+5. Click "Create Project"
 
 ### Get Database Connection String
-1. Go to Settings → Database in your Supabase dashboard
-2. Find "Connection string" section
-3. Copy the URI format connection string
-4. Replace `[YOUR-PASSWORD]` with your actual database password
+1. In your Neon dashboard, go to "Connection Details"
+2. Copy the "Connection string" (it includes password)
+3. It looks like: `postgresql://username:password@ep-xxx.us-east-2.aws.neon.tech/neondb?sslmode=require`
 
-Example: `postgresql://postgres:your_password@db.abc123.supabase.co:5432/postgres`
+### Alternative: Supabase (if available)
+If you have Supabase access:
+1. Go to [supabase.com](https://supabase.com) and sign up/login
+2. Click "New project" → Enter name: `boardgame-tracker`
+3. Choose strong password, select region
+4. Get connection string from Settings → Database
 
 ## 2. GitHub Repository
 
@@ -47,7 +50,7 @@ In your Vercel dashboard:
 2. Add these variables:
 
 ```
-DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@db.abc123.supabase.co:5432/postgres
+DATABASE_URL=postgresql://username:password@ep-xxx.us-east-2.aws.neon.tech/neondb?sslmode=require
 NEXTAUTH_SECRET=your-very-long-random-secret-string
 NEXTAUTH_URL=https://your-app-name.vercel.app
 NEXT_PUBLIC_APP_URL=https://your-app-name.vercel.app
