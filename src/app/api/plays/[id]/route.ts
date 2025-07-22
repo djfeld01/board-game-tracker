@@ -70,7 +70,7 @@ export async function PUT(
 
     // Add updated participants if provided
     if (participants && participants.length > 0) {
-      const participantValues = participants.map((participant: any) => ({
+      const participantValues = participants.map((participant: { name: string; score?: number | null; position?: number | null; isWinner?: boolean }) => ({
         playId: playId,
         playerName: participant.name,
         score: participant.score || null,

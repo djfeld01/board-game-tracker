@@ -2,7 +2,7 @@
 
 import { AuthLayout } from "@/components/auth-layout";
 import { useState, useEffect } from "react";
-import { Calendar, Clock, Users, GamepadIcon, Plus, X, Edit, Trash2, Save } from "lucide-react";
+import { Calendar, Clock, Users, Plus, X, Edit, Trash2 } from "lucide-react";
 
 interface Play {
   id: string;
