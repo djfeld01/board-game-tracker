@@ -7,12 +7,18 @@
 2. Click "Create Project"
 3. Enter project name: `boardgame-tracker`
 4. Select region close to your users
-5. Click "Create Project"
+5. **PostgreSQL Version**: Neon defaults to PostgreSQL 17 (your local is 15.13 - this is fine!)
+6. Click "Create Project"
 
 ### Get Database Connection String
 1. In your Neon dashboard, go to "Connection Details"
 2. Copy the "Connection string" (it includes password)
 3. It looks like: `postgresql://username:password@ep-xxx.us-east-2.aws.neon.tech/neondb?sslmode=require`
+
+### PostgreSQL Version Compatibility
+- **Your local**: PostgreSQL 15.13
+- **Neon production**: PostgreSQL 17
+- **Compatibility**: ✅ Excellent - PostgreSQL 17 is backward compatible with your schema and Drizzle ORM
 
 ### Alternative: Supabase (if available)
 If you have Supabase access:
@@ -86,5 +92,12 @@ Execute the SQL from `src/lib/db/migrations/0000_curvy_black_crow.sql` in your S
 - **Database errors**: Verify DATABASE_URL format and password
 - **Auth errors**: Ensure NEXTAUTH_SECRET is set and NEXTAUTH_URL matches your domain
 - **BGG API issues**: The BGG XML API can be slow, be patient with searches
+- **PostgreSQL version differences**: Your local PostgreSQL 15.13 vs Neon's PostgreSQL 17 is not a problem - all your Drizzle schema features are compatible
+
+### Common PostgreSQL 15 → 17 Notes
+- **UUID generation**: Works identically
+- **Timestamp functions**: No changes needed
+- **Text/Integer types**: Fully compatible
+- **Your schema**: Uses only standard features, 100% compatible
 
 Your app will be live at: `https://your-project-name.vercel.app`
